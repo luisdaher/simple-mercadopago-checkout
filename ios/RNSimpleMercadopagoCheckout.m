@@ -1,5 +1,6 @@
 
 #import "RNSimpleMercadopagoCheckout.h"
+@import MercadoPagoSDK
 
 @implementation RNSimpleMercadopagoCheckout
 
@@ -10,4 +11,3 @@
 RCT_EXPORT_MODULE()
 
 @end
-  
