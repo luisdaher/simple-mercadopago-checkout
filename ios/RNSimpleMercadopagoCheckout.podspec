@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.source_files  = "RNSimpleMercadopagoCheckout/**/*.{h,m,swift}"
   s.requires_arc = true
 
-
+  s.static_framework = true
   # s.dependency "React"
   s.dependency "MercadoPagoSDK", "~> 4.0"
   #s.dependency "others"
