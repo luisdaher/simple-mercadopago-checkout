@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.static_framework = true
-  s.dependency "React"
+  # s.dependency "React"
   s.dependency "MercadoPagoSDK", "~> 4.0"
   #s.dependency "others"
 
