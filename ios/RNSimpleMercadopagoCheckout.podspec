@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/luisdaher/simple-mercadopago-checkout"
   s.license      = "MIT"
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
-  s.author             = { "author" => "author@domain.cn" }
+  s.author             = { "author" => "luis.daher@cavylabs.com" }
   s.platform     = :ios, "9.0"
   s.source       = { :git => "https://github.com/luisdaher/simple-mercadopago-checkout.git", :tag => "master" }
   s.source_files  = "RNSimpleMercadopagoCheckout/**/*.{h,m,swift}"
