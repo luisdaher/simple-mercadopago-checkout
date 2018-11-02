@@ -1,13 +1,16 @@
+#if __has_include("RCTBridgeModule.h")
+#import "RCTBridgeModule.h"
+#else
+#import <React/RCTBridgeModule.h>
+#endif
 
-#import "RNSimpleMercadopagoCheckout.h"
-@import MercadoPagoSDK
+// @interface RNSimpleMercadopagoCheckout : NSObject <RCTBridgeModule>
+//
+// @end
 
-@implementation RNSimpleMercadopagoCheckout
 
-- (dispatch_queue_t)methodQueue
-{
-    return dispatch_get_main_queue();
-}
-RCT_EXPORT_MODULE()
+@interface RCT_EXTERN_MODULE(RNSimpleMercadopagoCheckout, NSObject)
+
+RCT_EXTERN_METHOD(startCheckout:(NSString *)publicKey prefId:(NSString *)prefId resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 
 @end
