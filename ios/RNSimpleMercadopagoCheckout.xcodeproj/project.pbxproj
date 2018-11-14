@@ -220,7 +220,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNSimpleMercadopagoCheckout;
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "RNSimpleMercadopagoCheckout-Bridging-Header/RNSimpleMercadopagoCheckout-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "RNSimpleMercadopagoCheckout/RNSimpleMercadopagoCheckout-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 			};
@@ -241,7 +241,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNSimpleMercadopagoCheckout;
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "RNSimpleMercadopagoCheckout-Bridging-Header/RNSimpleMercadopagoCheckout-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "RNSimpleMercadopagoCheckout/RNSimpleMercadopagoCheckout-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
