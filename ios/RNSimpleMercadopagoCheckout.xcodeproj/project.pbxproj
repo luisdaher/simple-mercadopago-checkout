@@ -213,6 +213,9 @@
 					"${inherited}",
 					"${BUILT_PRODUCTS_DIR}",
 					"$(SRCROOT)/../../../ios/Pods/MercadoPagoSDK/MercadoPagoSDK/MercadoPagoSDK/**",
+					"$(SRCROOT)/../../../ios/Pods/JRSwizzle/**",
+					"$(SRCROOT)/../../../ios/Pods/FXBlurView/FXBlurView/**",
+					"$(SRCROOT)/../../../ios/Pods/MLUI/LibraryComponents/**",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -239,6 +242,9 @@
 					"${inherited}",
 					"${BUILT_PRODUCTS_DIR}",
 					"$(SRCROOT)/../../../ios/Pods/MercadoPagoSDK/MercadoPagoSDK/MercadoPagoSDK/**",
+					"$(SRCROOT)/../../../ios/Pods/JRSwizzle/**",
+					"$(SRCROOT)/../../../ios/Pods/FXBlurView/FXBlurView/**",
+					"$(SRCROOT)/../../../ios/Pods/MLUI/LibraryComponents/**",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
