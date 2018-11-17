@@ -13,8 +13,37 @@ import MercadoPagoSDK
 class RNSimpleMercadopagoCheckout: NSObject {
     @objc func startCheckout(_ publicKey: String, prefId: String , resolver resolve:RCTPromiseResolveBlock,rejecter reject:RCTPromiseRejectBlock) -> Void {
 //        print(MercadoPagoSDKVersionNumber);
-        MercadoPagoCheckout.init(builder: MercadoPagoCheckoutBuilder.init(publicKey: publicKey, preferenceId: prefId)).start(navigationController: self.navigationController!)
+        let builder = MercadoPagoCheckoutBuilder.init(publicKey: publicKey, preferenceId: prefId)
+        let navController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
+        navController.setToolbarHidden(false, animated: true)
+        navController.setNavigationBarHidden(false, animated: true)
+        //TODO: Voltar com true assim que sair das telas do MercadoPago
+        builder.setLanguage("pt")
+        MercadoPagoCheckout.init(builder: MercadoPagoCheckoutBuilder.init(publicKey: publicKey, preferenceId: prefId)).start(navigationController: UIApplication.shared.keyWindow?.rootViewController as! UINavigationController)
         resolve(true);
     }
 
+}
+
+// MARK: Optional Lifecycle protocol implementation example.
+extension RNSimpleMercadopagoCheckout: PXLifeCycleProtocol {
+    func finishCheckout() -> ((PXResult?) -> Void)? {
+        let navController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
+        navController.setToolbarHidden(true, animated: true)
+        navController.setNavigationBarHidden(true, animated: true)
+        return nil
+    }
+
+    func cancelCheckout() -> (() -> Void)? {
+        let navController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
+        navController.setToolbarHidden(true, animated: true)
+        navController.setNavigationBarHidden(true, animated: true)
+        return nil
+    }
+
+    func changePaymentMethodTapped() -> (() -> Void)? {
+        return { () in
+            print("px - changePaymentMethodTapped")
+        }
+    }
 }
