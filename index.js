@@ -5,7 +5,7 @@ import axios from 'axios'
 const { RNSimpleMercadopagoCheckout } = NativeModules
 
 export default RNSimpleMercadopagoCheckout
-
+// TODO: passar payer.address.zip_code , payer.address.street_name , payer.address.street_number
 export function startCheckout (clientId, clientSecret, publicKey, email = 'demo@mail.com', items = []) {
   console.log('nativemodules')
   console.log(NativeModules.RNSimpleMercadopagoCheckout)

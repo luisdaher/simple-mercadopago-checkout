@@ -11,6 +11,10 @@ import MercadoPagoSDK
 
 @objc(RNSimpleMercadopagoCheckout)
 class RNSimpleMercadopagoCheckout: NSObject {
+    @objc static func requiresMainQueueSetup() -> Bool {
+        return false
+    }
+
     @objc func startCheckout(_ publicKey: String, prefId: String , resolver resolve:RCTPromiseResolveBlock,rejecter reject:RCTPromiseRejectBlock) -> Void {
 //        print(MercadoPagoSDKVersionNumber);
         let builder = MercadoPagoCheckoutBuilder.init(publicKey: publicKey, preferenceId: prefId)
