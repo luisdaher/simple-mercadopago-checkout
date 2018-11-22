@@ -13,8 +13,8 @@ apply plugin: 'com.android.library'
 
 android {
 
-    compileSdkVersion 26
-    buildToolsVersion "27.0.3"
+    buildToolsVersion = "27.0.3"
+    compileSdkVersion = 27
 
     defaultConfig {
         minSdkVersion 16
@@ -35,10 +35,6 @@ repositories {
 
 dependencies {
     compile 'com.facebook.react:react-native:+'
-    compile('com.mercadopago.android.px:checkout:4.+'){
-        transitive = true
-        exclude group: "com.squareup.okhttp3", module: 'okhttp-urlconnection'
-        exclude group: "com.squareup.okhttp3", module: 'okhttp'
-    }
+    compile 'com.mercadopago.android.px:checkout:4.+'
 }
   
