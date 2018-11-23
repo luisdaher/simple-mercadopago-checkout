@@ -16,14 +16,13 @@ class RNSimpleMercadopagoCheckout: NSObject {
     }
 
     @objc func startCheckout(_ publicKey: String, prefId: String , resolver resolve:RCTPromiseResolveBlock,rejecter reject:RCTPromiseRejectBlock) -> Void {
-//        print(MercadoPagoSDKVersionNumber);
         let builder = MercadoPagoCheckoutBuilder.init(publicKey: publicKey, preferenceId: prefId)
         let navController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
-        navController.setToolbarHidden(false, animated: true)
         navController.setNavigationBarHidden(false, animated: true)
-        //TODO: Voltar com true assim que sair das telas do MercadoPago
-        builder.setLanguage("pt")
-        MercadoPagoCheckout.init(builder: MercadoPagoCheckoutBuilder.init(publicKey: publicKey, preferenceId: prefId)).start(navigationController: UIApplication.shared.keyWindow?.rootViewController as! UINavigationController)
+
+        builder.setLanguage("pt-BR")
+        builder.setColor(checkoutColor: UIColor.green)
+        MercadoPagoCheckout.init(builder: MercadoPagoCheckoutBuilder.init(publicKey: publicKey, preferenceId: prefId)).start(navigationController: UIApplication.shared.keyWindow?.rootViewController as! UINavigationController, lifeCycleProtocol: self)
         resolve(true);
     }
 
@@ -33,15 +32,13 @@ class RNSimpleMercadopagoCheckout: NSObject {
 extension RNSimpleMercadopagoCheckout: PXLifeCycleProtocol {
     func finishCheckout() -> ((PXResult?) -> Void)? {
         let navController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
-        navController.setToolbarHidden(true, animated: true)
         navController.setNavigationBarHidden(true, animated: true)
         return nil
     }
 
     func cancelCheckout() -> (() -> Void)? {
         let navController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
-        navController.setToolbarHidden(true, animated: true)
-        navController.setNavigationBarHidden(true, animated: true)
+        navController.setNavigationBarHidden(true, animated: false)
         return nil
     }
 
