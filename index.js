@@ -6,7 +6,7 @@ const { RNSimpleMercadopagoCheckout } = NativeModules
 
 export default RNSimpleMercadopagoCheckout
 // TODO: passar payer.address.zip_code , payer.address.street_name , payer.address.street_number
-export function startCheckout (clientId, clientSecret, publicKey, email = 'demo@mail.com', items = []) {
+export function startCheckout (clientId, clientSecret, publicKey, payerData, items = []) {
   console.log('nativemodules')
   console.log(NativeModules.RNSimpleMercadopagoCheckout)
   if (!clientId) throw 'clientId required to start MercadoPago checkout'
@@ -24,7 +24,7 @@ export function startCheckout (clientId, clientSecret, publicKey, email = 'demo@
 
     return axios.post(`https://api.mercadopago.com/checkout/preferences?access_token=${accessToken}`, {
       items: items,
-      payer: { email: email }
+      payer: payerData
     }).then(function (res) {
       // handle success
       // console.log(res)

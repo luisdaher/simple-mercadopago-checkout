@@ -45,9 +45,9 @@
 
 ## Usage
 ```javascript
-import RNSimpleMercadopagoCheckout from 'react-native-simple-mercadopago-checkout';
+import { startCheckout } from 'react-native-simple-mercadopago-checkout';
 
-// TODO: What to do with the module?
-RNSimpleMercadopagoCheckout;
+//refer to https://www.mercadopago.com.br/developers/en/api-docs/basic-checkout/checkout-preferences/ for more detailed info on how to populate the items and payerData
+startCheckout(MERCADOPAGO_CLIENT_ID, MERCADOPAGO_CLIENT_SECRET, MERCADOPAGO_TEST_PUBLICKEY, payerData, items)
 ```
   
