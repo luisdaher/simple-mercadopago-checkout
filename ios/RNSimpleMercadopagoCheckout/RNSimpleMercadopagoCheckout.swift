@@ -22,7 +22,7 @@ class RNSimpleMercadopagoCheckout: NSObject {
 
         builder.setLanguage("pt-BR")
         builder.setColor(checkoutColor: UIColor.green)
-        MercadoPagoCheckout.init(builder: MercadoPagoCheckoutBuilder.init(publicKey: publicKey, preferenceId: prefId)).start(navigationController: UIApplication.shared.keyWindow?.rootViewController as! UINavigationController, lifeCycleProtocol: self)
+        MercadoPagoCheckout.init(builder: builder).start(navigationController: UIApplication.shared.keyWindow?.rootViewController as! UINavigationController, lifeCycleProtocol: self)
         resolve(true);
     }
 
