@@ -24,7 +24,10 @@ export function startCheckout (clientId, clientSecret, publicKey, payerData, ite
 
     return axios.post(`https://api.mercadopago.com/checkout/preferences?access_token=${accessToken}`, {
       items: items,
-      payer: payerData
+      payer: payerData,
+      payment_methods: {
+        excluded_payment_types: [{id: 'atm'}, {id: 'ticket'}, {id: 'bank_transfer'}]
+      }
     }).then(function (res) {
       // handle success
       // console.log(res)

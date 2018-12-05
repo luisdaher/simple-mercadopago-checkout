@@ -34,14 +34,6 @@
       compile project(':react-native-simple-mercadopago-checkout')
   	```
 
-#### Windows
-[Read it! :D](https://github.com/ReactWindows/react-native)
-
-1. In Visual Studio add the `RNSimpleMercadopagoCheckout.sln` in `node_modules/react-native-simple-mercadopago-checkout/windows/RNSimpleMercadopagoCheckout.sln` folder to their solution, reference from their app.
-2. Open up your `MainPage.cs` app
-  - Add `using Simple.Mercadopago.Checkout.RNSimpleMercadopagoCheckout;` to the usings at the top of the file
-  - Add `new RNSimpleMercadopagoCheckoutPackage()` to the `List<IReactPackage>` returned by the `Packages` method
-
 
 ## Usage
 ```javascript
@@ -50,4 +42,16 @@ import { startCheckout } from 'react-native-simple-mercadopago-checkout';
 //refer to https://www.mercadopago.com.br/developers/en/api-docs/basic-checkout/checkout-preferences/ for more detailed info on how to populate the items and payerData
 startCheckout(MERCADOPAGO_CLIENT_ID, MERCADOPAGO_CLIENT_SECRET, MERCADOPAGO_TEST_PUBLICKEY, payerData, items)
 ```
-  
+
+## MercadoPago preference reference
+https://www.mercadopago.com.br/developers/en/api-docs/basic-checkout/checkout-preferences/
+
+## Testing
+
+### Credit Cards
+(obs.: see https://www.mercadopago.com.br/developers/pt/solutions/payments/basic-checkout/test/test-payments/)
+
+For brazilian cards, use:
+- 4235 6477 2802 5682	(Visa)
+- 5031 4332 1540 6351	(Master)
+- 3753 651535 56885 (Amex)
