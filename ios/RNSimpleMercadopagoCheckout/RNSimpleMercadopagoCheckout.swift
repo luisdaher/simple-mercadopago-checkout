@@ -14,6 +14,7 @@ class RNSimpleMercadopagoCheckout: RCTEventEmitter {
 
     var checkoutResolver:RCTPromiseResolveBlock!
     var checkoutRejecter:RCTPromiseRejectBlock!
+    var navigationController:UIViewController!
 
     @objc override static func requiresMainQueueSetup() -> Bool {
         return false
@@ -21,20 +22,26 @@ class RNSimpleMercadopagoCheckout: RCTEventEmitter {
 
     @objc func startCheckout(_ publicKey: String, prefId: String , resolver resolve:@escaping RCTPromiseResolveBlock,rejecter reject:@escaping RCTPromiseRejectBlock) -> Void {
         let builder = MercadoPagoCheckoutBuilder.init(publicKey: publicKey, preferenceId: prefId)
-        let navController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
         checkoutResolver = resolve
         checkoutRejecter = reject
-        navController.setNavigationBarHidden(false, animated: false)
+        self.navigationController = UIApplication.shared.keyWindow?.rootViewController
 
         builder.setLanguage("pt-BR")
-        builder.setColor(checkoutColor: UIColor.green)
         DispatchQueue.main.async(execute: {
-            let checkout = MercadoPagoCheckout.init(builder: builder)
+            // creating a dummy controller
+            let nav1 = UINavigationController()
+            let mainView = UIViewController(nibName: nil, bundle: nil)
+            nav1.viewControllers = [mainView]
+            UIApplication.shared.keyWindow?.rootViewController = nav1
 
-            checkout.start(navigationController: UIApplication.shared.keyWindow?.rootViewController as! UINavigationController, lifeCycleProtocol: self)
+            let checkout = MercadoPagoCheckout.init(builder: builder)
+            checkout.start(navigationController: nav1, lifeCycleProtocol: self)
         })
     }
 
+    func restoreNavigationBarProperties() -> Void {
+        UIApplication.shared.keyWindow?.rootViewController = self.navigationController
+    }
 }
 
 // MARK: Optional Lifecycle protocol implementation example.
@@ -45,15 +52,13 @@ extension RNSimpleMercadopagoCheckout: PXLifeCycleProtocol {
     }
 
     func finishCheckout() -> ((PXResult?) -> Void)? {
-        let navController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
-        navController.setNavigationBarHidden(true, animated: false)
+        self.restoreNavigationBarProperties()
         checkoutResolver(true)
         return nil
     }
 
     func cancelCheckout() -> (() -> Void)? {
-        let navController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
-        navController.setNavigationBarHidden(true, animated: false)
+        self.restoreNavigationBarProperties()
         checkoutRejecter("canceled", "checkout canceled", nil)
         return nil
     }
